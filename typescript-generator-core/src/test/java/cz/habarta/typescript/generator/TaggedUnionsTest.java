@@ -206,8 +206,8 @@ public class TaggedUnionsTest {
                 "\n" +
                 "interface Rectangle extends Shape {\n" +
                 "    kind: 'rectangle';\n" +
-                "    width: number;\n" +
                 "    height: number;\n" +
+                "    width: number;\n" +
                 "}\n" +
                 "\n" +
                 "interface Circle extends Shape {\n" +
@@ -238,8 +238,8 @@ public class TaggedUnionsTest {
                 "\n" +
                 "interface CRectangle2 extends IQuadrilateral2 {\n" +
                 "    kind: 'rectangle';\n" +
-                "    width: number;\n" +
                 "    height: number;\n" +
+                "    width: number;\n" +
                 "}\n" +
                 "\n" +
                 "interface CCircle2 extends IShape2 {\n" +
@@ -315,8 +315,8 @@ public class TaggedUnionsTest {
                 "\n" +
                 "interface Rectangle extends Shape {\n" +
                 "    kind: 'rectangle';\n" +
-                "    width: number;\n" +
                 "    height: number;\n" +
+                "    width: number;\n" +
                 "}\n" +
                 "\n" +
                 "interface Circle extends Shape {\n" +
@@ -518,8 +518,8 @@ public class TaggedUnionsTest {
                 "\n" +
                 "interface Rectangle2 extends Shape2 {\n" +
                 "    kind: 'rectangle';\n" +
-                "    width: number;\n" +
                 "    height: number;\n" +
+                "    width: number;\n" +
                 "}\n" +
                 "\n" +
                 "interface Circle2 extends Shape2 {\n" +
@@ -553,8 +553,8 @@ public class TaggedUnionsTest {
                 "}\n" +
                 "\n" +
                 "interface Rectangle2 extends Shape2 {\n" +
-                "    width: number;\n" +
                 "    height: number;\n" +
+                "    width: number;\n" +
                 "}\n" +
                 "\n" +
                 "interface Circle2 extends Shape2 {\n" +
