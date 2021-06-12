@@ -588,7 +588,7 @@ public class JaxrsApplicationTest {
         settings.generateJaxrsApplicationInterface = true;
         final String output = new TypeScriptGenerator(settings).generateTypeScript(Input.from(EnumQueryParamResource.class));
         Assert.assertTrue(output.contains("queryParams?: { target?: TargetEnum; }"));
-        Assert.assertTrue(output.contains("type TargetEnum = \"Target1\" | \"Target2\""));
+        Assert.assertTrue(output.contains("type TargetEnum = \"Target1\" | \"Target2\"") || output.contains("type TargetEnum = \"Target2\" | \"Target1\""));
     }
 
     @Path("enum-query-param")
