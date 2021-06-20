@@ -82,7 +82,7 @@ public class Jackson2ParserPropertiesTest {
         Assert.assertEquals(Arrays.asList("id1", "id2", "name", "password1", "password2"), getProperties(User1.class));
         Assert.assertEquals(Arrays.asList("id1", "id2", "name", "password1", "password2"), getProperties(User2.class));
         Assert.assertEquals(Arrays.asList("id1", "id2", "name", "password1", "password2"), getProperties(User3.class));
-        Assert.assertEquals(Arrays.asList("password1", "id1", "password2", "id2", "name"), getProperties(User4.class));
+        Assert.assertEquals(Arrays.asList("id1", "id2", "name", "password1", "password2"), getProperties(User4.class));
     }
 
     private List<String> getProperties(Class<?> beanClass) {

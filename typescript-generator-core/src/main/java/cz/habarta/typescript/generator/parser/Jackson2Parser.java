@@ -608,23 +608,6 @@ public class Jackson2Parser extends ModelParser {
                     )
                     .collect(Collectors.toCollection(ArrayList::new));
 
-            // sort
-            final Comparator<Pair<BeanProperty, BeanProperty>> bySerializationOrder = (pair1, pair2) ->
-                    pair1.getValue1() != null && pair2.getValue1() != null
-                            ? Integer.compare(
-                                    serializableProperties.indexOf(pair1.getValue1()),
-                                    serializableProperties.indexOf(pair2.getValue1()))
-                            : 0;
-            final Comparator<Pair<BeanProperty, BeanProperty>> byIndex = Comparator.comparing(
-                    pair -> getIndex(pair),
-                    Comparator.nullsLast(Comparator.naturalOrder()));
-            final List<Field> fields = Utils.getAllFields(beanClass);
-            final Comparator<Pair<BeanProperty, BeanProperty>> byFieldIndex = Comparator.comparing(
-                    pair -> getFieldIndex(fields, pair),
-                    Comparator.nullsLast(Comparator.naturalOrder()));
-            properties.sort(bySerializationOrder
-                    .thenComparing(byIndex)
-                    .thenComparing(byFieldIndex));
             return properties;
         }
 
