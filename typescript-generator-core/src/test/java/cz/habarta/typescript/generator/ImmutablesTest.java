@@ -29,8 +29,8 @@ public class ImmutablesTest {
                 "\n" +
                 "interface Rectangle extends Shape {\n" +
                 "    kind: 'rectangle';\n" +
-                "    height: number;\n" +
                 "    width: number;\n" +
+                "    height: number;\n" +
                 "}\n" +
                 "\n" +
                 "interface Circle extends Shape {\n" +
