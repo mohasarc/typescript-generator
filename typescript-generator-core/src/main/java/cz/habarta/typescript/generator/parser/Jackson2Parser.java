@@ -612,8 +612,8 @@ public class Jackson2Parser extends ModelParser {
             final Comparator<Pair<BeanProperty, BeanProperty>> bySerializationOrder = (pair1, pair2) ->
                     pair1.getValue1() != null && pair2.getValue1() != null
                             ? Integer.compare(
-                            serializableProperties.indexOf(pair1.getValue1()),
-                            serializableProperties.indexOf(pair2.getValue1()))
+                                serializableProperties.indexOf(pair1.getValue1()),
+                                serializableProperties.indexOf(pair2.getValue1()))
                             : 0;
             final Comparator<Pair<BeanProperty, BeanProperty>> byIndex = Comparator.comparing(
                     pair -> getIndex(pair),
