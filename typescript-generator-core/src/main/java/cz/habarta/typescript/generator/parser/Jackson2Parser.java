@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationConfig;
@@ -113,7 +114,8 @@ public class Jackson2Parser extends ModelParser {
         
     }
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper()
+                        .configure(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY, true);
 
     public Jackson2Parser(Settings settings, TypeProcessor typeProcessor) {
         this(settings, typeProcessor, Collections.emptyList(), false);
@@ -616,13 +618,17 @@ public class Jackson2Parser extends ModelParser {
             final Comparator<Pair<BeanProperty, BeanProperty>> byIndex = Comparator.comparing(
                     pair -> getIndex(pair),
                     Comparator.nullsLast(Comparator.naturalOrder()));
-            final List<Field> fields = Utils.getAllFields(beanClass);
-            final Comparator<Pair<BeanProperty, BeanProperty>> byFieldIndex = Comparator.comparing(
-                    pair -> getFieldIndex(fields, pair),
-                    Comparator.nullsLast(Comparator.naturalOrder()));
+            final Comparator<Pair<BeanProperty, BeanProperty>> byAlphabeticalOrder = (pair1, pair2) ->
+                    pair1.getValue1() != null && pair2.getValue1() != null
+                            ? pair1.getValue1().getName().compareTo(pair2.getValue1().getName())
+                            : pair1.getValue1() != null && pair2.getValue2() != null
+                                    ? pair1.getValue1().getName().compareTo(pair2.getValue2().getName())
+                                    : pair1.getValue2() != null && pair2.getValue1() != null
+                                            ? pair1.getValue2().getName().compareTo(pair2.getValue1().getName())
+                                            : 0;
             properties.sort(bySerializationOrder
                     .thenComparing(byIndex)
-                    .thenComparing(byFieldIndex));
+                    .thenComparing(byAlphabeticalOrder));
             return properties;
         }
 
