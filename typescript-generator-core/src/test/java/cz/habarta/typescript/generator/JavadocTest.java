@@ -114,14 +114,14 @@ public class JavadocTest {
     public static class ClassWithJavadoc {
 
         /**
-         * Documentation for documentedEnumField.
-         */
-        public DummyEnum documentedEnumField;
-        
-        /**
          * Documentation for documentedField.
          */
         public String documentedField;
+
+        /**
+         * Documentation for documentedEnumField.
+         */
+        public DummyEnum documentedEnumField;
 
         /**
          * Documentation for getter property.
